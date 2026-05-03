@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wumpus World - KB Agent</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🐺 Wumpus World</h1>
+        <p class="subtitle">Knowledge-Based Agent with Propositional Logic &amp; Resolution Refutation</p>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Rows</label>
+                <input type="number" id="rows" min="3" max="8" value="4">
+            </div>
+            <div class="control-group">
+                <label>Columns</label>
+                <input type="number" id="cols" min="3" max="8" value="4">
+            </div>
+            <div class="control-group">
+                <label>Pits</label>
+                <input type="number" id="numPits" min="1" max="8" value="2">
+            </div>
+            <button id="newGameBtn" class="btn btn-green">🎮 New Game</button>
+            <button id="autoExploreBtn" class="btn btn-blue">🤖 Auto Explore</button>
+            <button id="resetBtn" class="btn btn-red">🔄 Reset</button>
+        </div>
+
+        <div class="main-content">
+            <div class="grid-container">
+                <div id="grid" class="grid"></div>
+                <div class="grid-status" id="gameStatus">Click New Game to start</div>
+            </div>
+
+            <div class="side-panel">
+                <div class="panel">
+                    <h3>📊 Real-Time Metrics</h3>
+                    <div class="metric"><span>Inference Steps</span><span id="inferenceSteps">0</span></div>
+                    <div class="metric"><span>Current Percepts</span><span id="currentPercepts">None</span></div>
+                    <div class="metric"><span>Cells Visited</span><span id="cellsVisited">1</span></div>
+                    <div class="metric"><span>Safe Cells Found</span><span id="safeCellsFound">1</span></div>
+                    <div class="metric"><span>KB Clauses</span><span id="kbClauses">2</span></div>
+                </div>
+
+                <div class="panel">
+                    <h3>🎨 Legend</h3>
+                    <div class="legend-item"><span class="box agent"></span> Agent Position</div>
+                    <div class="legend-item"><span class="box safe"></span> Safe Cell (Proved)</div>
+                    <div class="legend-item"><span class="box visited"></span> Visited Cell</div>
+                    <div class="legend-item"><span class="box unknown"></span> Unknown / Unvisited</div>
+                    <div class="legend-item"><span class="box pit"></span> Confirmed Pit</div>
+                    <div class="legend-item"><span class="box wumpus"></span> Confirmed Wumpus</div>
+                </div>
+
+                <div class="panel">
+                    <h3>🧠 Knowledge Base (CNF)</h3>
+                    <div id="kbDisplay" class="kb-display">¬P_0_0<br>¬W_0_0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="log-panel">
+            <h3>📝 Action Log</h3>
+            <div id="messageLog" class="message-log"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
